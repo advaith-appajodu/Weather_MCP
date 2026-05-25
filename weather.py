@@ -92,9 +92,11 @@ Forecast: {period["detailedForecast"]}
 
     return "\n---\n".join(forecasts)
 
+import os
+
 def main():
-    # Initialize and run the server
-    mcp.run(transport="sse")
+    port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="sse", host="0.0.0.0", port=port) # type: ignore
 
 
 if __name__ == "__main__":
