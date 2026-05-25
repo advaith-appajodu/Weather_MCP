@@ -94,9 +94,12 @@ Forecast: {period["detailedForecast"]}
 
 import os
 
+
 def main():
     port = int(os.environ.get("PORT", 8000))
-    mcp.run(transport="sse", host="0.0.0.0", port=port) # type: ignore
+    mcp.settings.host = "0.0.0.0"
+    mcp.settings.port = port
+    mcp.run(transport="sse") 
 
 
 if __name__ == "__main__":
